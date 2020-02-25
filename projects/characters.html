@@ -30,15 +30,15 @@
             
             <div class="mdc-drawer__content  mdc-drawer-app-content main-content">
               <nav class="mdc-list">
-                <a class="mdc-list-item mdc-list-item--activated" href="./about/" aria-current="page">
+                <a class="mdc-list-item " href="../about/" aria-current="page">
                   <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
                   <span class="mdc-list-item__text">About Me</span>
                 </a>
-                <a class="mdc-list-item" href="./projects/">
+                <a class="mdc-list-item mdc-list-item--activated" href="./index.html">
                   <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
                   <span class="mdc-list-item__text">Projects</span>
                 </a>
-                <a class="mdc-list-item" href="./experience/">
+                <a class="mdc-list-item" href="#">
                   <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
                   <span class="mdc-list-item__text">Experience</span>
                 </a>
@@ -69,13 +69,33 @@
       <main class="content">
         <div class="container">
             <div class="title">
-            About Me
+            Chinese Characters Recognition
             </div>
             <div class="paragraph">
-            <p>I am a graduate student majoring in computer science at NYU courant right now.</p>
-                <p>I started my career in computer science in 2018 at UCB from the famous course CSf61b, which was taught by Prof. John DeNero at that time. The magic of computer science attracted me deeply since then. After that, I decided to pursue a career in computer science.</p>
-                <p>Right now, I am looking for an intern position as a software engineer.</p>
-        </div>
+                <p>Github repository: <a href="https://github.com/Leahlijuan/Chinese-characters-recognition">Chinese-characters-recognition
+                  </a></p>
+                <p>
+                  Our main task is to recognize chinese characters in signboard, but we only have a limited amount of labelled data. So we train a pre-trained model using self-supervised learning ﬁrst. In the procedure of getting pre-trained model, we collect some signboard images without text label, and pick three squares and inpaint them with a speciﬁc color. And then, use the inpainted image to generate the original image.
+                </p>
+                <p>The following is the main structure of our pre-trained model.</p>
+                <div class="row">
+                  <div class="col-lg-12">
+                  <img src="../img/pretrain.png" alt="">
+              </div>
+              <p>Our downstream task is to recoginize Chinese characters sequence in the signboard. We used the classic CRNN model in our 
+                downstream model.</p>
+                <p>The following is the plot of accuracy of both model with and without our pretrained model.</p>
+                <p>The accuracy of our model preforms roughly 5% above random initialized CRNN model which further demonstrated that our model
+                  have learned implicit knowledge of different structures and spatial relationships.
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                  <img src="../img/accuracy.png" alt="">
+              </div>
+              </div>
+            </div>
+            
+  
         </div>
       </main>
     </div>

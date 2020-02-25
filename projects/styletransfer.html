@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>me</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(function () {
+            $("#header").load("../header.html");
+        });
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- <div id="header"></div> -->
+    <div class="">
+        <aside class="mdc-drawer sidebar">
+          <div id="name">
+            Juan Li
+          </div>
+            
+            <div class="mdc-drawer__content  mdc-drawer-app-content main-content">
+              <nav class="mdc-list">
+                <a class="mdc-list-item " href="../about/" aria-current="page">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                  <span class="mdc-list-item__text">About Me</span>
+                </a>
+                <a class="mdc-list-item mdc-list-item--activated" href="./index.html">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
+                  <span class="mdc-list-item__text">Projects</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                  <span class="mdc-list-item__text">Experience</span>
+                </a>
+                <!-- <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                  <span class="mdc-list-item__text">Drafts</span>
+                </a>
+          
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Labels</h6>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                  <span class="mdc-list-item__text">Family</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                  <span class="mdc-list-item__text">Friends</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                  <span class="mdc-list-item__text">Work</span>
+                </a> -->
+              </nav>
+            </div>
+          </aside>
+        </div>
+    <div>
+      <main class="content">
+        <div class="container">
+            <div class="title">
+            Neural Style Transfer
+            </div>
+            <div class="paragraph">
+                <p>Project website: <a href="http://www.deepstyletransfer.com/">www.deepstyletransfer.com</a></p>
+                <p>You can upload two images -- one is content image, another is style image. We can transfer your content image to the style of your style image. The following is an example. The "beijing" is the content image and "starrynight" is style image. And the output is the result of apply the style of style image to the content image.
+
+                    The algorithm we are using is credited to Authors of the arbitrary style transfer paper and The Magenta repository for arbitrary style transfer</p>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="../img/1.jpg" alt="">
+                            <div>beijing</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="../img/2.jpg" alt="">
+                            <div>starrynight</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="../img/3.jpg" alt="">
+                            <div>transfer result</div>
+                        </div>
+                    </div>
+                    <br>
+                <p>The followin is the main structure of this project.</p>
+                <div class="row">
+                    <div class="col-lg-12">
+                    <img src="../img/styletransfer.png" alt="">
+                    <div>project architecture</div>
+                </div>
+                </div>
+                <br>
+                <ul>
+                    <li>The front end is displayed as the website in this <a href="http://www.deepstyletransfer.com/">link</a>(mentioned before) and it is built in React.</li>
+                    <li>User can upload two images (one is original image, and another is the image contains style). After the
+                        front end server received the two images, it will (1) send a message to the uid server and then get a unique id and then return it the user;
+                        (2) send messege with the uid and image extension information to the Rabbit message queue; (3) upload the images to the AWS S3 (database).
+                    </li>
+                    <li>Fast style transfer server is used to run the image transfer task. The transormation algorithm uses deep learning technology. At first, it receives two string of image names, and the pull images from the AWS S3. And the run the algorithm and get the transformed 
+                        image. The server would send a image to the uid server to notify that this task with the specific uid has successfully done, and also uplaod the transformed image to the AWS S3.
+                    </li>
+                    <li>The user can retrived the image using the uid he got right after he uploaded the images.</li>
+                    <li>The whole procedure from the user upload two images to retrive the transformed image is less than 1 minute.</li>
+                </ul>
+            </div>
+            
+  
+        </div>
+      </main>
+    </div>
+</body>
+
+</html>

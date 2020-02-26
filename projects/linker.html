@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>me</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(function () {
+            $("#header").load("../header.html");
+        });
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- <div id="header"></div> -->
+    <div class="">
+        <aside class="mdc-drawer sidebar">
+          <div id="name">
+            Juan Li
+          </div>
+            
+            <div class="mdc-drawer__content  mdc-drawer-app-content main-content">
+              <nav class="mdc-list">
+                <a class="mdc-list-item " href="../about/" aria-current="page">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                  <span class="mdc-list-item__text">About Me</span>
+                </a>
+                <a class="mdc-list-item mdc-list-item--activated" href="./index.html">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
+                  <span class="mdc-list-item__text">Projects</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                  <span class="mdc-list-item__text">Experience</span>
+                </a>
+              </nav>
+            </div>
+          </aside>
+        </div>
+    <div>
+      <main class="content">
+        <div class="container">
+            <div class="title">
+            Linker
+            </div>
+            <div class="paragraph">
+                <p>This is a course project for my course of operating system taught by Professor Hubertus Franke at NYU courant.</p>
+                <p>In general, a linker takes individually compiled code/object modules and creates a single executable by resolving 
+                    external symbol references (e.g. variables and functions) and module relative addressing by assigning global 
+                    addresses after placing the modules’ object code at global addresses.</p>
+                <p>In this project, I implemented a two-pass linker. In the first pass, I find out some warnings and errors and output
+                     the symbol table. In the second pass, I dealt with some warnings and errors and then print out the memory map.
+                </p>
+                <p>The code is wrote in C++.</p>
+                <p>My steps to finish such a task is:</p>
+                <ul>
+                    <li>Construct a getToken function that can read from the input file toke by token ("1","E","1004" are called tokens).</li>
+                    <li>Since the linker has two part, so I divide my task into part 1 and part 2.</li>
+                    <li>Basically, I read the whole file module by module.</li>
+                    <li>At first, I use a correct input without any warnings and errors to test my code to make sure my code can 
+                        deal with the most correct situation. After that, I started to deal with the warnings and error could happen and write my 
+                        own test cases to test my code.
+                    </li>
+                </ul>
+                </p>
+                <p>Here are two examples of inputs and outputs.</p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="../img/linker1.png" alt="">
+                        <div>input-1</div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../img/linker2.png" alt="">
+                        <div>output-1</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="../img/linker3.png" alt="">
+                        <div>input-2</div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../img/linker4.png" alt="">
+                        <div>output-2</div>
+                    </div>
+                </div>
+
+                <br>
+                Since it is a course project so I am not allowed to share my code online.
+                   
+            </div>
+            
+  
+        </div>
+      </main>
+    </div>
+</body>
+
+</html>

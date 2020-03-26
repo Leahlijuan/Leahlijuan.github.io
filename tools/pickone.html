@@ -2,61 +2,102 @@
 <html lang="en">
 
 <head>
-    <title>me</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
-    </script>
-    <script>
-        $(function () {
-            $("#header").load("../header.html");
-        });
-    </script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+  <title>me</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+  <script>
+    $(function () {
+      $("#header").load("../header.html");
+    });
+  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <!-- <div id="header"></div> -->
-    <div class="">
-        <aside class="mdc-drawer sidebar">
-          <div id="name">
-            Juan Li
-          </div>
-            
-            <div class="mdc-drawer__content  mdc-drawer-app-content main-content">
-              <nav class="mdc-list">
-                <a class="mdc-list-item " href="../about/" aria-current="page">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-                  <span class="mdc-list-item__text">About Me</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
-                  <span class="mdc-list-item__text">Projects</span>
-                </a>
-                <a class="mdc-list-item" href="../experience/">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-                  <span class="mdc-list-item__text">Experience</span>
-                </a>
-                <a class="mdc-list-item mdc-list-item--activated" href="./tools/">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_vote</i>
-                    <span class="mdc-list-item__text">Tools</span>
-                  </a>
-              </nav>
-            </div>
-          </aside>
+  <!-- <div id="header"></div> -->
+  <div class="">
+    <aside class="mdc-drawer sidebar">
+      <div id="name">
+        Juan Li
+      </div>
+
+      <div class="mdc-drawer__content  mdc-drawer-app-content main-content">
+        <nav class="mdc-list">
+          <a class="mdc-list-item " href="../about/" aria-current="page">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+            <span class="mdc-list-item__text">About Me</span>
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
+            <span class="mdc-list-item__text">Projects</span>
+          </a>
+          <a class="mdc-list-item" href="../experience/">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+            <span class="mdc-list-item__text">Experience</span>
+          </a>
+          <a class="mdc-list-item mdc-list-item--activated" href="./tools/">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_vote</i>
+            <span class="mdc-list-item__text">Tools</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+  </div>
+  <div>
+    <main class="content">
+      <div class="container">
+        <div class="form">
+          <h1>Pick One</h1>
+          <br>
+          <textarea id="randonchoice" rows="10" cols="100"
+            placeholder="Input all choices spilt by space or coma"></textarea>
+          <input id="randonchoicefile" type="file" name="">
+          <br>
+          <br>
+          <button type="button" class="btn btn-dark" onclick="pickone()">Pick One</button>
+          <div id="pickoneresult">result</div>
         </div>
-    <div>
-      <main class="content">
-        <div class="container">
-            <div class="form"></div>
-        </div>
-      </main>
-    </div>
+
+
+      </div>
+    </main>
+  </div>
+  <script>
+    function pickone() {
+      var result = "";
+      if ($("#randonchoice").val().trim() == "") {
+        if ($("#randonchoicefile").get(0).files.length === 0) {
+          alert("input something or upload a file")
+        } else {
+          var files = document.getElementById('randonchoicefile').files;
+          var i = 0;
+          var file = files[i];
+          var reader = new FileReader();
+          reader.readAsText(file);
+          reader.onload = function (e) {
+            var s = e.target.result
+            var choices = s.split(/[\s,\n]+/);
+            result = choices[Math.floor(Math.random() * choices.length)];
+            document.getElementById("pickoneresult").innerHTML = result;
+
+          }
+        }
+      } else {
+        var allchoice = $("#randonchoice").val().trim();
+        var choices = allchoice.split(/[\s,\n]+/);
+        result = choices[Math.floor(Math.random() * choices.length)];
+        document.getElementById("pickoneresult").innerHTML = result;
+      }
+      
+    }
+  </script>
 </body>
 
 </html>

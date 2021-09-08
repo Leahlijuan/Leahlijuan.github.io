@@ -38,6 +38,8 @@ body {
     font-size: 3em;
     font-weight: bold;
   }
+
+
   .container {
     margin: 10% 0%;
     
@@ -99,6 +101,24 @@ body {
 
 #pickoneresult {
   font-size: 2rem;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
 }
 
   
